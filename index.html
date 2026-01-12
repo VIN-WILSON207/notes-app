@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes App - Supabase Demo</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📝 Notes App</h1>
+      <p>Secure note-taking with Supabase  authentication</p>
+    </div>
+
+    <div class="content">
+      <!-- Auth Section -->
+      <div class="auth-section active" id="authSection">
+        <div class="tab-buttons">
+          <button class="tab-btn active" id="loginTab">Login</button>
+          <button class="tab-btn" id="signupTab">Sign Up</button>
+        </div>
+
+        <div id="authMessage"></div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+          </div>
+          <button type="submit">Login</button>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm" style="display: none;">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="signupEmail" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="signupPassword" required placeholder="••••••••" minlength="6">
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" id="signupPasswordConfirm" required placeholder="••••••••" minlength="6">
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Notes Section -->
+      <div class="notes-section" id="notesSection">
+        <div class="user-info">
+          <span>👤 <strong id="userEmail"></strong></span>
+          <button class="btn-secondary" id="logoutBtn">Logout</button>
+        </div>
+
+        <div id="notesMessage"></div>
+
+        <!-- Create Note Form -->
+        <form id="createNoteForm">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="noteTitle" required placeholder="Note title">
+          </div>
+          <div class="form-group">
+            <label>Content</label>
+            <textarea id="noteContent" placeholder="Write your note here..."></textarea>
+          </div>
+          <button type="submit">Create Note</button>
+        </form>
+
+        <hr style="margin: 30px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+        <h2 style="margin-bottom: 20px; color: #333;">My Notes</h2>
+        <div id="notesList" class="notes-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load environment config first, then app.js -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
