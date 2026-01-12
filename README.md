@@ -112,16 +112,6 @@ SELECT * FROM notes;
 SELECT * FROM notes WHERE user_id = auth.uid();
 ```
 
-## Testing RLS
-
-To verify RLS is working:
-
-1. Create two accounts (user1@test.com, user2@test.com)
-2. Login as user1, create some notes
-3. Login as user2, create different notes
-4. Each user should only see their own notes
-5. Try to access another user's note directly via API - should fail
-
 **Expected Behavior**:
 - Users can only see their own notes
 - Users can't modify/delete other users' notes
@@ -151,13 +141,3 @@ All operations go through Supabase client:
 - `supabase.from('notes').insert()` - Create note
 - `supabase.from('notes').update()` - Update note
 - `supabase.from('notes').delete()` - Delete note
-
-## Troubleshooting
-
-**Can't create notes**: Check that user is logged in and RLS policies are enabled.
-
-**See wrong user's notes**: RLS policies may not be set correctly. Re-run schema.sql.
-
-**Login fails**: Verify credentials are correct and email confirmation is disabled for testing.
-
-**Blank page**: Check browser console for errors. Verify Supabase URL and key are correct.
